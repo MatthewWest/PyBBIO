@@ -34,49 +34,57 @@ pot = AIN0
 # Create an event loop:
 event_loop = EventLoop()
 
-#--- The events to be triggered: ---
+
+# --- The events to be triggered: ---
 def event1():
-  toggle(USR1)
-  return EVENT_CONTINUE
+    toggle(USR1)
+    return EVENT_CONTINUE
+
 
 def event2():
-  toggle(USR2)
-  return EVENT_CONTINUE
+    toggle(USR2)
+    return EVENT_CONTINUE
+
 
 def event3():
-  digitalWrite(USR3, HIGH)
-  return EVENT_CONTINUE
+    digitalWrite(USR3, HIGH)
+    return EVENT_CONTINUE
+
 
 def event4():
-  digitalWrite(USR3, LOW)
-  return EVENT_CONTINUE
-#-----------------------------------
+    digitalWrite(USR3, LOW)
+    return EVENT_CONTINUE
+
+
+# -----------------------------------
 
 def setup():
-  # This sets sw1 to trigger event1 when pressed with a debounce
-  # time of 50ms:
-  event_loop.add_event(DigitalTrigger(sw1, HIGH, event1, 50))
+    # This sets sw1 to trigger event1 when pressed with a debounce
+    # time of 50ms:
+    event_loop.add_event(DigitalTrigger(sw1, HIGH, event1, 50))
 
-  # This sets sw2 to trigger event2 when pressed with a debounce
-  # time of 270ms:
-  event_loop.add_event(DigitalTrigger(sw2, HIGH, event2, 270))
+    # This sets sw2 to trigger event2 when pressed with a debounce
+    # time of 270ms:
+    event_loop.add_event(DigitalTrigger(sw2, HIGH, event2, 270))
 
-  # This sets event3 to be called when the value on pot is above
-  # 1820: 
-  event_loop.add_event(AnalogLevel(pot, 1820, event3))
+    # This sets event3 to be called when the value on pot is above
+    # 1820:
+    event_loop.add_event(AnalogLevel(pot, 1820, event3))
 
-  # This sets event3 to be called when the value on pot is below
-  # 1820: 
-  event_loop.add_event(AnalogLevel(pot, 1820, event4, direction=-1))
+    # This sets event3 to be called when the value on pot is below
+    # 1820:
+    event_loop.add_event(AnalogLevel(pot, 1820, event4, direction=-1))
 
-  # Then start the event loop:
-  event_loop.start()
+    # Then start the event loop:
+    event_loop.start()
+
 
 def loop():
-  # Because the event loop is run as a seperate process, this will
-  # be executed normally.
-  print "Time running: %ims" % int(millis())
-  delay(3000)
+    # Because the event loop is run as a seperate process, this will
+    # be executed normally.
+    print("Time running: %ims" % int(millis()))
+    delay(3000)
+
 
 run(setup, loop)
 # As soon as ctrl-c is pressed the event loop process will be 

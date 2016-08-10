@@ -26,13 +26,16 @@ I2C2.open()
 # Initialize the ADXL345:
 accel = ADXL345(I2C2)
 
+
 def setup():
-  # The default range is +/-2 G, set to +/-8 G: 
-  accel.setRange(accel.RANGE_8G)
+    # The default range is +/-2 G, set to +/-8 G:
+    accel.setRange(accel.RANGE_8G)
+
 
 def loop():
-  x, y, z = accel.getXYZ()
-  print "{:+0.2f}G  {:+0.2f}G  {:+0.2f}G".format(x, y, z)
-  delay(100)
+    x, y, z = accel.getXYZ()
+    print("{:+0.2f}G  {:+0.2f}G  {:+0.2f}G".format(x, y, z))
+    delay(100)
+
 
 run(setup, loop)

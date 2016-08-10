@@ -19,8 +19,8 @@ from bbio.libraries.ADT7310 import *
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-adt = ADT7310(0,0)
-#critical pin
+adt = ADT7310(0, 0)
+# critical pin
 pinc = GPIO1_18
 heaterled = GPIO1_28
 fanled = GPIO3_17
@@ -31,55 +31,57 @@ reciever = "reciever@email.com"
 
 
 def criticalalarm():
-  text = "Temperature is too high and not controllable.\n \
+    text = "Temperature is too high and not controllable.\n \
             Check controls.\n"
-  sendmsg(text)     
+    sendmsg(text)
+
 
 def sendmsg(message):
-  print "Sending email notifcation"
-  text = message
-  msg = MIMEMultipart('alternative')
-  msg['Subject'] = "Beaglebone Temperature Control"
-  msg['From'] = sender
-  msg['To'] = reciever
-  msg.attach(MIMEText(text, 'plain'))
-  server = smtplib.SMTP("smtp.gmail.com", 587)
-  server.starttls()
-  server.login(sender,'password')
-  server.sendmail(sender, reciever, msg.as_string())
-  print "send"
-  
+    print("Sending email notifcation")
+    text = message
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = "Beaglebone Temperature Control"
+    msg['From'] = sender
+    msg['To'] = reciever
+    msg.attach(MIMEText(text, 'plain'))
+    server = smtplib.SMTP("smtp.gmail.com", 587)
+    server.starttls()
+    server.login(sender, 'password')
+    server.sendmail(sender, reciever, msg.as_string())
+    print("send")
+
 
 def setup():
-  #sets low temperature threshold
-  adt.setLowTemp(18)
-  #sets high temperature threshold
-  adt.setHighTemp(25)
-  #sets critical temperature threshold
-  adt.setCriticalTemp(40)
-  #sets the function to call when interrupt pin in active.
-  adt.setCriticalAlarm(pinc,criticalalarm)
-  pinMode(heaterled,OUTPUT)
-  pinMode(fanled,OUTPUT)
-  digitalWrite(heaterled,LOW)
-  digitalWrite(fanled,LOW)
-  
-def loop():
-  temp = adt.getTemp()
-  
-  if (temp <= 18):
-    digitalWrite(heaterled,HIGH)
-    digitalWrite(fanled,LOW)
+    # sets low temperature threshold
+    adt.setLowTemp(18)
+    # sets high temperature threshold
+    adt.setHighTemp(25)
+    # sets critical temperature threshold
+    adt.setCriticalTemp(40)
+    # sets the function to call when interrupt pin in active.
+    adt.setCriticalAlarm(pinc, criticalalarm)
+    pinMode(heaterled, OUTPUT)
+    pinMode(fanled, OUTPUT)
+    digitalWrite(heaterled, LOW)
+    digitalWrite(fanled, LOW)
 
-  elif (temp > 18 and temp <= 25 ):
-    digitalWrite(heaterled,LOW)
-    digitalWrite(fanled,LOW)
-  
-  elif(temp > 25):
-    digitalWrite(heaterled,LOW)
-    digitalWrite(fanled,HIGH)
-    
-  delay(5000)
-  
-run(setup,loop)
-    
+
+def loop():
+    temp = adt.getTemp()
+
+    if (temp <= 18):
+        digitalWrite(heaterled, HIGH)
+        digitalWrite(fanled, LOW)
+
+    elif (temp > 18 and temp <= 25):
+        digitalWrite(heaterled, LOW)
+        digitalWrite(fanled, LOW)
+
+    elif (temp > 25):
+        digitalWrite(heaterled, LOW)
+        digitalWrite(fanled, HIGH)
+
+    delay(5000)
+
+
+run(setup, loop)

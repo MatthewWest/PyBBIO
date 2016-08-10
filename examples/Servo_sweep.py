@@ -23,20 +23,24 @@ from bbio.libraries.Servo import *
 
 # Create an instance of the Servo object:
 servo1 = Servo(PWM1A)
-# We could have left out the PWM pin here and used 
+
+
+# We could have left out the PWM pin here and used
 # Servo.attach(PWM1A) in setup() instead.
 
 def setup():
-  # Nothing to do here
-  pass
+    # Nothing to do here
+    pass
+
 
 def loop():
-  for angle in range(180):  # 0-180 degrees
-    servo1.write(angle)
-    delay(15)
+    for angle in range(180):  # 0-180 degrees
+        servo1.write(angle)
+        delay(15)
 
-  for angle in range(180, 0, -1):  # 180-0 degrees
-    servo1.write(angle)
-    delay(15)
+    for angle in range(180, 0, -1):  # 180-0 degrees
+        servo1.write(angle)
+        delay(15)
+
 
 run(setup, loop)

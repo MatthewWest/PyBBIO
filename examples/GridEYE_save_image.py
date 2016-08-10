@@ -28,30 +28,32 @@ grideye.enableAveraging()
 
 
 def generateImage(frame):
-  min_temp = min(frame)
-  max_temp = max(frame)
-  
-  for i in range(64):
-    # Map temperature value to ratio of min and max temp:
-    frame[i] -= min_temp
-    frame[i] /= (max_temp - min_temp)
+    min_temp = min(frame)
+    max_temp = max(frame)
 
-    # Convert ratio to (R, G, B):
-    frame[i] = colorsys.hsv_to_rgb(1-frame[i], 1, 1)
-    frame[i] = tuple(map(lambda x: int(255*x), frame[i]))
+    for i in range(64):
+        # Map temperature value to ratio of min and max temp:
+        frame[i] -= min_temp
+        frame[i] /= (max_temp - min_temp)
 
-  image = Image.new("RGB", (8, 8))
-  image.putdata(frame)
-  image = image.resize((WIDTH,HEIGHT), Image.BILINEAR)
-  image.save("thermal-image.png")
+        # Convert ratio to (R, G, B):
+        frame[i] = colorsys.hsv_to_rgb(1 - frame[i], 1, 1)
+        frame[i] = tuple(map(lambda x: int(255 * x), frame[i]))
+
+    image = Image.new("RGB", (8, 8))
+    image.putdata(frame)
+    image = image.resize((WIDTH, HEIGHT), Image.BILINEAR)
+    image.save("thermal-image.png")
+
 
 def setup():
-  pass
+    pass
+
 
 def loop():
-  frame = grideye.getFrame()
-  generateImage(frame)
-  stop()
+    frame = grideye.getFrame()
+    generateImage(frame)
+    stop()
 
 
 run(setup, loop)

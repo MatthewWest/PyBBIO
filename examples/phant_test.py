@@ -25,22 +25,25 @@ https://github.com/alexanderhiam/PyBBIO/wiki/PhantStream
 from bbio import *
 from bbio.libraries.IoT.phant import PhantStream
 
-
 pot = AIN0
 field_name = "voltage"
-public_key = ""#required
-private_key = ""#optional
-p = PhantStream(public_key,private_key)
+public_key = ""  # required
+private_key = ""  # optional
+p = PhantStream(public_key, private_key)
+
+
 def setup():
-  pass
-  
+    pass
+
+
 def loop():
-  val = analogRead(pot)
-  v = inVolts(val)
-  samples = {
-    field_name : v
-  }
-  p.send(samples)
-  delay(10000)
-  
-run(setup,loop)
+    val = analogRead(pot)
+    v = inVolts(val)
+    samples = {
+        field_name: v
+    }
+    p.send(samples)
+    delay(10000)
+
+
+run(setup, loop)

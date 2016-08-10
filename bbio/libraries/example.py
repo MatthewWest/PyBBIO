@@ -5,6 +5,4 @@
 
 
 def foo():
-  print "Hello, world!"
-
-
+    print("Hello, world!")

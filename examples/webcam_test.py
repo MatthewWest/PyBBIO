@@ -14,15 +14,18 @@ from bbio.libraries.WebCam import WebCam
 cam = WebCam()
 s = 0
 
+
 def setup():
-  pass
-  
+    pass
+
+
 def loop():
-  global s
-  location = "pic"+str(s)
-  cam.takeSnapshot(location)
-  print "saving image to %s" % location
-  s += 1
-  delay(10000)
-  
+    global s
+    location = "pic" + str(s)
+    cam.takeSnapshot(location)
+    print("saving image to %s" % location)
+    s += 1
+    delay(10000)
+
+
 run(setup, loop)

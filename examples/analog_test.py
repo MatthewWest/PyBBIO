@@ -20,28 +20,31 @@
 # permanent damage to the ADC module! 
 #
 # This example is in the public domain
- 
+
 
 # Import PyBBIO library:
 from bbio import *
 
-pot1 = AIN0 # pin 39 on header P9 
-pot2 = AIN2 # pin 37 on header P9 
+pot1 = AIN0  # pin 39 on header P9
+pot2 = AIN2  # pin 37 on header P9
+
 
 def setup():
-  # Nothing to do here
-  pass
+    # Nothing to do here
+    pass
+
 
 def loop():
-  # Get the ADC values:
-  val1 = analogRead(pot1)
-  val2 = analogRead(pot2)
-  # And convert to voltages:
-  voltage1 = inVolts(val1)
-  voltage2 = inVolts(val2)
-  print " pot1 ADC value: %i - voltage: %fv" % (val1, voltage1)
-  print " pot2 ADC value: %i - voltage: %fv\n" % (val2, voltage2)
-  delay(500)
+    # Get the ADC values:
+    val1 = analogRead(pot1)
+    val2 = analogRead(pot2)
+    # And convert to voltages:
+    voltage1 = inVolts(val1)
+    voltage2 = inVolts(val2)
+    print(" pot1 ADC value: %i - voltage: %fv" % (val1, voltage1))
+    print(" pot2 ADC value: %i - voltage: %fv\n" % (val2, voltage2))
+    delay(500)
+
 
 # Start the loop:
 run(setup, loop)

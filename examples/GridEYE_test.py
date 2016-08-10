@@ -18,10 +18,10 @@ grideye = GridEYE(I2C1)
 ambient = grideye.getAmbientTemp()
 frame = grideye.getFrame()
 
-print "ambient temp: {:0.1f}C".format(ambient)
-print "sensor temp:"
+print("ambient temp: {:0.1f}C".format(ambient))
+print("sensor temp:")
 for y in range(8):
-  string = ""
-  for x in range(8):
-     string += "  {:5.1f}".format(frame[y*8+x])
-  print string
+    string = ""
+    for x in range(8):
+        string += "  {:5.1f}".format(frame[y * 8 + x])
+    print(string)

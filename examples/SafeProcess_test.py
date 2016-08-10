@@ -12,17 +12,21 @@
 from bbio import *
 from bbio.libraries.SafeProcess import *
 
+
 def foo():
-  while(True):
-    print "foo"
-    delay(1000)
+    while (True):
+        print("foo")
+        delay(1000)
+
 
 def setup():
-  p = SafeProcess(target=foo)
-  p.start()
+    p = SafeProcess(target=foo)
+    p.start()
+
 
 def loop():
-  print "loop"
-  delay(500)
+    print("loop")
+    delay(500)
+
 
 run(setup, loop)

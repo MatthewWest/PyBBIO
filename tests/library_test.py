@@ -3,15 +3,15 @@
 # imports and tests PyBBIO/libraries/example.py
 
 try:
-  import example
+    import example
 except:
-  print "\nWe can't import the PyBBIO library until we've imported bbio"
+    print("\nWe can't import the PyBBIO library until we've imported bbio")
 
-print "Importing bbio"
+print("Importing bbio")
 from bbio import *
 
-print "now we can import example"
+print("now we can import example")
 from bbio.libraries import example
 
-print "testing example library:"
+print("testing example library:")
 example.foo()

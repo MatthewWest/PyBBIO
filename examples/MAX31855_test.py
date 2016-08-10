@@ -22,25 +22,28 @@ cs_pin = 0
 # Create an instance of the MAX31855 class:
 thermocouple = MAX31855(SPI1, cs_pin)
 
+
 def setup():
-  # Nothing to do here...
-  pass
+    # Nothing to do here...
+    pass
+
 
 def loop():
-  temp = thermocouple.readTempC()
-  if (temp == None):
-    # The MAX31855 reported an error, print it:
-    if thermocouple.error == thermocouple.OPEN_CIRCUIT:
-      print "Thermocouple not connected"
+    temp = thermocouple.readTempC()
+    if (temp == None):
+        # The MAX31855 reported an error, print it:
+        if thermocouple.error == thermocouple.OPEN_CIRCUIT:
+            print("Thermocouple not connected")
 
-    elif thermocouple.error == thermocouple.SHORT_TO_GND:
-      print "Thermocouple shorted to GND"
+        elif thermocouple.error == thermocouple.SHORT_TO_GND:
+            print("Thermocouple shorted to GND")
 
-    elif thermocouple.error == thermocouple.SHORT_TO_VCC:
-      print "Thermocouple shorted to VCC"
+        elif thermocouple.error == thermocouple.SHORT_TO_VCC:
+            print("Thermocouple shorted to VCC")
 
-  else:
-    print "Temp: {:0.2f} C".format(temp)
-  delay(1000)
+    else:
+        print("Temp: {:0.2f} C".format(temp))
+    delay(1000)
+
 
 run(setup, loop)

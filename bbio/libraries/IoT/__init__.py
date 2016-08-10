@@ -2,5 +2,5 @@
 import thingspeak, phant
 
 __all__ = [
-  'thingspeak', 'phant'
+    'thingspeak', 'phant'
 ]

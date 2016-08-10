@@ -17,20 +17,23 @@ from bbio.libraries.BMP183 import BMP183
 # default CS0 chip select pin:
 bmp = BMP183(SPI0)
 
+
 def setup():
-  # The BMP183 is initialized when the BMP183 class is instantiated,
-  # so there's nothing to do here
-  pass
+    # The BMP183 is initialized when the BMP183 class is instantiated,
+    # so there's nothing to do here
+    pass
+
 
 def loop():
-  # Get the current temperature in Celsius:
-  temp = bmp.getTemp()
-  # Get the current pressure in Pascals:
-  pressure = bmp.getPressure()
+    # Get the current temperature in Celsius:
+    temp = bmp.getTemp()
+    # Get the current pressure in Pascals:
+    pressure = bmp.getPressure()
 
-  print "\ntemperature : %0.2f C" % temp
-  print "pressure    : %i Pa" % pressure
+    print("\ntemperature : %0.2f C" % temp)
+    print("pressure    : %i Pa" % pressure)
 
-  delay(5000)
+    delay(5000)
+
 
 run(setup, loop)

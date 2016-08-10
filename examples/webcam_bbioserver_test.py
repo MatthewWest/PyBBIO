@@ -17,7 +17,7 @@ server = BBIOServer()
 cam.startStreaming()
 
 vid = Page("Webcam Video")
-vid.add_video("192.168.7.2","5000")
+vid.add_video("192.168.7.2", "5000")
 server.start(vid)
 
 cam.stopStreaming()

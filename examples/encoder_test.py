@@ -13,12 +13,15 @@ from bbio.libraries.RotaryEncoder import RotaryEncoder
 
 encoder = RotaryEncoder(RotaryEncoder.EQEP2b)
 
+
 def setup():
-  encoder.setAbsolute()
-  encoder.zero()
-  
+    encoder.setAbsolute()
+    encoder.zero()
+
+
 def loop():
-  print "encoder position : "+encoder.getPosition()
-  delay(1000)
-  
+    print("encoder position : " + encoder.getPosition())
+    delay(1000)
+
+
 run(setup, loop)

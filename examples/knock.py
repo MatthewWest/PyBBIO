@@ -23,20 +23,23 @@
 
 from bbio import *
 
-LED = USR3        # On-board LED
-KNOCK_SENSOR = A0 # AIN0 - pin 39 on header P9
-THRESHOLD = 245   # analogRead() value > THRESHOLD indicates knock
+LED = USR3  # On-board LED
+KNOCK_SENSOR = A0  # AIN0 - pin 39 on header P9
+THRESHOLD = 245  # analogRead() value > THRESHOLD indicates knock
 
 
 def setup():
-  pinMode(LED, OUTPUT)  
-  print "PyBBIO Knock Sensor"
+    pinMode(LED, OUTPUT)
+    print("PyBBIO Knock Sensor")
+
 
 def loop():
-  value = analogRead(KNOCK_SENSOR)
-  #print value
-  if (value > THRESHOLD):
-    toggle(LED)
-    print "knock!"
-  delay(100)
+    value = analogRead(KNOCK_SENSOR)
+    # print value
+    if (value > THRESHOLD):
+        toggle(LED)
+        print("knock!")
+    delay(100)
+
+
 run(setup, loop)

@@ -7,26 +7,30 @@
 
 from bbio import *
 
-pin = GPIO1_28 
+pin = GPIO1_28
 
 n_interrupts = 0
 
+
 def countInterrupts():
-  # This function will be called every time the pin goes low
-  global n_interrupts
-  n_interrupts += 1
-  print "interrupt # %i" % n_interrupts
-  if n_interrupts >= 5:
-    print "detaching interrupt"
-    detachInterrupt(pin)
-    
+    # This function will be called every time the pin goes low
+    global n_interrupts
+    n_interrupts += 1
+    print("interrupt # %i" % n_interrupts)
+    if n_interrupts >= 5:
+        print("detaching interrupt")
+        detachInterrupt(pin)
+
+
 def setup():
-  pinMode(pin, INPUT, PULLUP)
-  attachInterrupt(pin, countInterrupts, FALLING)
-  print "falling edge interrupt attached to P9.12 (GPIO1_28)"
-  
+    pinMode(pin, INPUT, PULLUP)
+    attachInterrupt(pin, countInterrupts, FALLING)
+    print("falling edge interrupt attached to P9.12 (GPIO1_28)")
+
+
 def loop():
-  print "The loop continues..."
-  delay(1000)
-  
+    print("The loop continues...")
+    delay(1000)
+
+
 run(setup, loop)
