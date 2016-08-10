@@ -4,9 +4,15 @@
  A dynamic web interface library for PyBBIO.
 """
 
-import os, sys, urlparse, traceback, threading, time
-from SimpleHTTPServer import SimpleHTTPRequestHandler
+import os
+import sys
+import threading
+import time
+import traceback
+import urlparse
+
 from BaseHTTPServer import HTTPServer
+from SimpleHTTPServer import SimpleHTTPRequestHandler
 
 from bbio import *
 

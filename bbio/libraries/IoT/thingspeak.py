@@ -11,7 +11,8 @@ This module is released as part of PyBBIO under its MIT license.
 See PyBBIO/LICENSE.txt
 """
 
-import requests, datetime
+import requests
+import datetime
 
 
 class ThingSpeakChannel(object):

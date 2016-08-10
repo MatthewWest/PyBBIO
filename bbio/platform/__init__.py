@@ -1,10 +1,10 @@
-from platform import detect_platform
+from .platform import detect_platform
 
 _platform = detect_platform()
 
 if "BeagleBone" in _platform:
-    from beaglebone import *
-    import beaglebone
+    from .beaglebone import *
+    from . import beaglebone
 
 # elif "SomeOtherPlatform" in _platform:
 #  ...

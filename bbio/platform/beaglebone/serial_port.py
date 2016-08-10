@@ -5,8 +5,11 @@
 # 
 # Beaglebone serial driver
 
-import os, glob, cape_manager, bbio
-from config import UART, DEC, BIN, OCT, HEX
+import bbio
+import os
+
+from . import cape_manager
+from .config import UART, DEC, BIN, OCT, HEX
 
 try:
     import serial

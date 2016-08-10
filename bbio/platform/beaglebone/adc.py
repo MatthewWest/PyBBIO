@@ -8,8 +8,8 @@
 # Just a wrapper for the sysfs ADC driver for the time being. 
 
 import os, glob, bbio
-import cape_manager
-from config import ADC, ADC_ENABLE_DTS_OVERLAY
+from . import cape_manager
+from .config import ADC, ADC_ENABLE_DTS_OVERLAY
 
 _ADC_INITIALIZED = False
 

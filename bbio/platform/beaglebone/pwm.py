@@ -5,10 +5,10 @@
 # 
 # Beaglebone PWM driver for kernel >= 3.8
 
-from bbio.platform.beaglebone import cape_manager
-from bbio.platform.util import sysfs
-from bbio.common import delay, addToCleanup
-from config import RES_8BIT, PWM_PINS, PWM_PERIOD, PWM_DUTY, PWM_POLARITY, \
+from . import cape_manager
+from ..util import sysfs
+from ...common import delay, addToCleanup
+from .config import RES_8BIT, PWM_PINS, PWM_PERIOD, PWM_DUTY, PWM_POLARITY, \
     PWM_RUN, PWM_DEFAULT_PERIOD
 
 PWM_PINS_ENABLED = {}

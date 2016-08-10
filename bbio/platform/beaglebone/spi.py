@@ -3,8 +3,15 @@
 # github.com/graycatlabs/PyBBIO
 # MIT License
 
-import cape_manager, bbio, os, glob, serbus
-from config import SPI_BASE_ADDRESSES
+
+import glob
+import os
+
+import serbus
+
+import bbio
+from . import cape_manager
+from .config import SPI_BASE_ADDRESSES
 
 
 class SPIBus(serbus.SPIDev):

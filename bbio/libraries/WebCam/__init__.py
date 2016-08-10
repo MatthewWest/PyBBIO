@@ -1,1 +1,1 @@
-from webcam import WebCam
+from .webcam import WebCam

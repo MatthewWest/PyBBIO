@@ -14,4 +14,4 @@ from .common import addToCleanup, millis, micros, delay, delayMicroseconds
 
 from .platform import *
 
-import libraries
+from . import libraries

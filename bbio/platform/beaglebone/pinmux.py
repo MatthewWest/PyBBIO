@@ -6,10 +6,14 @@
 # Beaglebone pinmux driver
 # For Beaglebones with 3.8 kernel
 
-from config import OCP_PATH, GPIO, GPIO_FILE_BASE, EXPORT_FILE, UNEXPORT_FILE, \
+import bbio
+import glob
+import os
+
+from . import cape_manager
+from .config import OCP_PATH, GPIO, GPIO_FILE_BASE, EXPORT_FILE, UNEXPORT_FILE, \
     SLOTS_FILE
-from bbio.common import addToCleanup
-import glob, os, cape_manager, bbio
+from ...common import addToCleanup
 
 
 def pinMux_universalio(gpio_pin, mode, preserve_mode_on_exit=False):

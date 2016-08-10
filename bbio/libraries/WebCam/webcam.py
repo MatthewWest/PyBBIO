@@ -1,15 +1,19 @@
 from bbio import *
-import gst, sys, gobject, pygtk, gst.video
+import gst
+import sys
+import gobject
+import pygtk
+import gst.video
 
 
 class WebCam(object):
     def __init__(self, video_device=0):
-        '''
+        """
         WebCam(video_device_num)
         Initialises the WebCam object.
         video_device_num corresponds to the /dev/video number
         This switches on your camera until stopPipeline() is called.
-        '''
+        """
         self.video_num = video_device
         self.video_dev = "/dev/video%i" % (video_device)
         self.pipeline = gst.Pipeline()
@@ -27,17 +31,17 @@ class WebCam(object):
 
         self.streaming = 0
 
-        if not (self.srcbin and self.videocbin and self.pic_tee and self.pic_queue \
-                        and self.video_queue and self.fakesink and self.fakestreamsink and \
+        if not (self.srcbin and self.videocbin and self.pic_tee and self.pic_queue
+                        and self.video_queue and self.fakesink and self.fakestreamsink and
                         self.pipeline and self.bufferqueue):
             raise Exception("Elements could not be created")
 
-        self.pipeline.add(self.srcbin, self.videocbin, self.pic_tee, self.pic_queue, \
-                          self.video_queue, self.fakesink, self.fakestreamsink, \
+        self.pipeline.add(self.srcbin, self.videocbin, self.pic_tee, self.pic_queue,
+                          self.video_queue, self.fakesink, self.fakestreamsink,
                           self.bufferqueue)
-        if (not gst.element_link_many(self.srcbin, self.pic_tee) or \
-                    not gst.element_link_many(self.pic_queue, self.fakesink) or \
-                    not gst.element_link_many(self.video_queue, self.videocbin, self.bufferqueue, \
+        if (not gst.element_link_many(self.srcbin, self.pic_tee) or
+                    not gst.element_link_many(self.pic_queue, self.fakesink) or
+                    not gst.element_link_many(self.video_queue, self.videocbin, self.bufferqueue,
                                               self.fakestreamsink)):
             raise Exception("Elements could not be linked")
 
@@ -101,10 +105,10 @@ class WebCam(object):
         return bin
 
     def takeSnapshot(self, filename):
-        '''
+        """
         takeSnapshot(filename)
         takes a snap shot and stores it in filename.jpeg
-        '''
+        """
         filename = str(filename) + ".jpeg"
         caps = gst.Caps('image/jpeg')
         self.fakesink.set_state(gst.STATE_PAUSED)
@@ -119,12 +123,12 @@ class WebCam(object):
         self.fakesink.set_state(gst.STATE_PLAYING)
 
     def startStreaming(self, port=5000):
-        '''
+        """
         startStreaming((optional)port)
         starts streaming video from the webcam to http://your_bbb's_ip_address:port
         port defaults to 5000
         NOTE : Once port no. is set trying to change it will show an error.
-        '''
+        """
         self.streamsink.set_property("host", "127.0.0.1")
         self.streamsink.set_property("port", int(port))
         self.streamsink.set_state(gst.STATE_PLAYING)
@@ -138,10 +142,10 @@ class WebCam(object):
         self.sink_stream_pad.set_blocked(False)
 
     def stopStreaming(self):
-        '''
+        """
         stopStreaming()
         stops the streaming
-        '''
+        """
         self.fakestreamsink.set_state(gst.STATE_PLAYING)
         self.sink_stream_pad.set_blocked(True)
         self.streamsink.set_state(gst.STATE_NULL)
@@ -150,10 +154,10 @@ class WebCam(object):
         self.sink_stream_pad.set_blocked(False)
 
     def stopPipeline(self):
-        '''
+        """
         stopPipeline()
         Switches off your camera.
         Can't use the same instance to switch ot back on
-        '''
+        """
         self.pipeline.set_state(gst.STATE_NULL)
         self.streamsink.set_state(gst.STATE_NULL)

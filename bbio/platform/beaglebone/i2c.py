@@ -5,8 +5,13 @@
 # 
 # Beaglebone i2c driver
 
-import bbio, cape_manager, os, glob, serbus
-from config import I2C_BASE_ADDRESSES
+import os
+import glob
+import serbus
+
+import bbio
+from . import cape_manager
+from .config import I2C_BASE_ADDRESSES
 
 
 class I2CBus(serbus.I2CDev):

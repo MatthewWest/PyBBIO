@@ -7,7 +7,8 @@
  HTU21D is released as part of PyBBIO under its MIT license.
  See PyBBIO/LICENSE.txt
 """
-import bbio, math
+import bbio
+import math
 
 
 class HTU21D(object):

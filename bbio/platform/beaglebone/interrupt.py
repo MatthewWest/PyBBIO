@@ -9,8 +9,13 @@
 # Alan Christopher Thomas - https://github.com/alanctkc
 # Thanks!
 
-from config import GPIO_FILE_BASE, RISING, FALLING, BOTH, GPIO
-import bbio, select, threading, os, time
+import bbio
+import os
+import select
+import threading
+import time
+
+from .config import GPIO_FILE_BASE, RISING, FALLING, BOTH, GPIO
 
 INTERRUPT_VALUE_FILES = {}
 

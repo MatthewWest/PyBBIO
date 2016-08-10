@@ -1,5 +1,5 @@
 # EventIO - __init__.py
 # 
 
-from eventio import *
+from .eventio import *
 

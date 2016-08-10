@@ -1,1 +1,1 @@
-from mma7660 import MMA7660
+from .mma7660 import MMA7660

@@ -1,13 +1,13 @@
 #!/usr/bin/env python
-'''
- adt7310_test.py 
+"""
+ adt7310_test.py
  Rekha Seethamraju
 
  An example to demonstrate the use of the ADT7310 library
  for PyBBIO.
 
  This example program is in the public domain.
-'''
+"""
 from bbio import *
 from bbio.libraries.ADT7310 import *
 
@@ -19,12 +19,12 @@ pinc = GPIO1_18
 
 
 def alarm():
-    '''executed when temp crosses threshold temperatures - high and low '''
+    """executed when temp crosses threshold temperatures - high and low """
     print("Too Hot or Cold!")
 
 
 def criticalalarm():
-    '''executed when temp crossed critical temperature '''
+    """executed when temp crossed critical temperature """
     print("Over Critical Temperature")
 
 

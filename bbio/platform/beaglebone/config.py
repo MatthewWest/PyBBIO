@@ -27,6 +27,7 @@ CONF_ADC_PIN = CONF_RX_ACTIVE | CONF_PULL_DISABLE
 ########################################
 ##--- Start device tree: ---##
 
+# TODO change paths to match 4.1+ paths
 SLOTS_FILE = glob.glob('/sys/devices/bone_capemgr.*/slots')
 SLOTS_FILE = SLOTS_FILE[0] if len(SLOTS_FILE) else None
 OCP_PATH = glob.glob('/sys/devices/ocp.*')[0]

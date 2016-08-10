@@ -5,10 +5,10 @@
  https://github.com/graycatlabs/PyBBIO
 """
 
-import sys, atexit
+import atexit
 
-from .platform import platform_init, platform_cleanup
 from .common import ADDITIONAL_CLEANUP, util_init
+from .platform import platform_init, platform_cleanup
 
 
 def bbio_init():
