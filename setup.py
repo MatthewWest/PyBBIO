@@ -19,7 +19,7 @@ if not os.path.exists(python_lib_path + 'py_compile.py'):
         import py_compile
 
         print("py_compile installed successfully")
-    except Exception, e:
+    except Exception as e:
         print("*py_compile install failed, could not import")
         print("*Exception raised:")
         raise e

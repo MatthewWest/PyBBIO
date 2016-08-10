@@ -3,7 +3,7 @@
 
 try:
     from .bbio import run, stop
-except ImportError, e:
+except ImportError as e:
     if e.args[0] == 'cannot import name run':
         # run() and stop() not defined in interactive mode
         pass
